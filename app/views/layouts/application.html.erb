@@ -14,8 +14,14 @@
   </head>
   <body>
 
+    <%= render 'layouts/navigation' %>
+    <%= render 'layouts/modal' %>
+    
+    <div class='container'>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
