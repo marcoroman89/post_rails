@@ -3,25 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Rails</title>
+    <title>CodeFriends</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <%= yield(:head) %>
   </head>
   <body>
-
-    <%= render 'layouts/navigation' %>
-    <%= render 'layouts/modal' %>
     
-    <div class='container'>
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-    </div>
+    <%= render "layouts/navigation" %>
+    <%= render "layouts/modal" %>
 
+    <div class="container">
+      <%= render "layouts/messages" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
+ 
   </body>
 </html>

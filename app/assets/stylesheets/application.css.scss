@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+$baseFontFamily: Roboto;
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+@import "bootstrap";
+
+
+/********** Generic Items **********/
+
+body {
+  padding-top: 60px;
+  margin-bottom: 100px;
+}
+
+body a:link {
+  text-decoration: none;
+ }
+
+.text-center {
+  text-align: center;
+}
+
+/********** Header **********/
+
+.hero-unit {
+  padding: 40px;
+  margin-top: 15px;
+}
+
+/********** Nav-Menu **********/
+
+.navbar .brand {
+  color: #fff;
+  text-shadow: none;
+  margin-top: 5px;
+}
+
+.navbar-inner {
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  background-color: #2d3538;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar .nav > li > a {
+  color: #fff;
+  text-shadow: none;
+  margin-top: 5px;
+}
+
+.navbar .nav > li > a:hover {
+  color: #999;
+}
+
+.navbar .nav .active > a {
+  color: #999;
+  background: none;
+  box-shadow: none;
+}
+
+.navbar .nav .active > a:hover {
+  background: none;
+  box-shadow: none;
+}
+
+.navbar .divider-vertical {
+  border-left: 1px solid #1c2022;
+  border-right: 1px solid #3e4a4e;
+  height: 52px;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: #2d3538;
+  color: #999;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+  margin: 8px 0 0 8px;
+}
+
+/********** Main Content **********/
+
+/********** Footer **********/
+
+.footer {
+  padding: 3px;
+  background-color: #2d3538;
+}
+
+.footer h6 {
+  color: #999;
+}
+
+@import "bootstrap-responsive";
