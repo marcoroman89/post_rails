@@ -17,7 +17,6 @@ $baseFontFamily: Roboto;
 
 @import "bootstrap";
 
-
 /********** Generic Items **********/
 
 body {
@@ -37,7 +36,7 @@ body a:link {
 
 .hero-unit {
   padding: 40px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 /********** Nav-Menu **********/
@@ -104,6 +103,10 @@ body a:link {
 .footer {
   padding: 3px;
   background-color: #2d3538;
+}
+
+.footer a {
+  color: #999;
 }
 
 .footer h6 {
