@@ -1,3 +1,14 @@
+<% if @post.errors.any? %>
+  <div class="alert alert-error">
+    <h5>Please fix the following errors:</h5>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
 <div class="page-header">
   <h2>New Post<small> - create a new rails post!</small></h2>
 </div> 
