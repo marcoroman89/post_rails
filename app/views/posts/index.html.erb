@@ -4,7 +4,7 @@
 
 <% @posts.each do |post| %>
   <%= render post.categories %>
-  <h3><%= link_to post.title, post.url %></h3>
+  <h3><%= link_to post.title, post_path(post) %></h3>
   <h4><%= post.description %></h4>
 
   <small class="muted">
