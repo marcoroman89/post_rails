@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h3><%= link_to "All Posts", posts_path %> &raquo <%= @category.name %></h3>
+</div>
+
+<% @category.posts.each do |category| %>
+  <%= render "posts/post", post: post %>
+<% end %>  

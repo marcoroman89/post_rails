@@ -1,14 +1,7 @@
 <div class="page-header">
-  <h2>Welcome <small> - , start posting!</small></h2>
+  <h3>Welcome <small> - , start posting!</small></h3>
 </div>
 
 <% @posts.each do |post| %>
-  <%= render post.categories %>
-  <h3><%= link_to post.title, post_path(post) %></h3>
-  <h4><%= post.description %></h4>
-
-  <small class="muted">
-    <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
-    | posted by <%= link_to post.creator.username, "#" %> <%= time_ago_in_words(post.created_at) + ' ago' %>
-  </small>  
+  <%= render "post", post: post %>
 <% end %>  
