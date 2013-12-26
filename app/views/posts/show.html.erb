@@ -1,7 +1,26 @@
+<%= render "shared/errors", obj: @comment %>
+
 <%= render @post.categories %>
   <h3><%= @post.title %></h3>
   <h4><%= @post.description %></h4>
 
   <small class="muted">
     <%= link_to "edit", edit_post_path(@post) %>
-  </small>  
+  </small>
+
+<%= form_for [@post, @comment] do |f| %>
+  <div class="control-group">
+    <%= f.label :body, "Leave a comment" %>
+    <%= f.text_area :body, class: "span12", rows: "7", placeholder: "Comment goes here" %>
+  </div>
+
+  <%= f.submit "Create comment", class: "btn btn-primary" %> 
+<% end %>  
+
+<h5>All Comments:</h5>
+
+<% @post.comments.each do |comment| %>
+  <p><em><%= comment.body %></em></p>
+  commented by <%= link_to comment.creator.username, "#" %>
+  <%= time_ago_in_words(comment.created_at) + " ago" %>
+<% end %>
