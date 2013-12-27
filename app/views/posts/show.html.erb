@@ -1,16 +1,24 @@
 <%= render "shared/errors", obj: @comment %>
 
 <%= render @post.categories %>
-  <h3><%= @post.title %></h3>
-  <h4><%= @post.description %></h4>
+  <div class="page-header">
+    <h3><%= @post.title %></h3>
+      <small>
+        posted by <%= link_to @post.creator.username, "#" %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
+        <%= link_to 'go to link', display_url(@post.url) %>
+        | <i class="icon-user"></i>
 
-  <small class="muted">
-    <%= link_to "edit", edit_post_path(@post) %>
-  </small>
+        <div class="pull-right">
+        [<%= link_to "edit", edit_post_path(@post) %>]
+        [<%= link_to "delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %>]
+        </div>  
+      </small>
+  </div>
+  
+<h4><%= @post.description %></h4>
 
 <%= form_for [@post, @comment] do |f| %>
   <div class="control-group">
-    <%= f.label :body, "Leave a comment" %>
     <%= f.text_area :body, class: "span12", rows: "7", placeholder: "Comment goes here" %>
   </div>
 
@@ -21,6 +29,9 @@
 
 <% @post.comments.each do |comment| %>
   <p><em><%= comment.body %></em></p>
-  commented by <%= link_to comment.creator.username, "#" %>
-  <%= time_ago_in_words(comment.created_at) + " ago" %>
+    <small class="muted">
+      commented by <%= link_to comment.creator.username, "#" %>
+      <%= time_ago_in_words(comment.created_at) + " ago" %>
+      | <i class="icon-user"></i>
+    </small>
 <% end %>

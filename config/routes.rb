@@ -1,6 +1,6 @@
 PostRails::Application.routes.draw do
-  root 'pages#home'
-    get 'about' => 'pages#about'
+  root "pages#home"
+    get "about" => "pages#about"
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
@@ -9,5 +9,4 @@ PostRails::Application.routes.draw do
 
   
   resources :categories, only: [:new, :create, :show]  
-
 end

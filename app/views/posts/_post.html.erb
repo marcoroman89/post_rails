@@ -1,8 +1,11 @@
-  <%= render post.categories %>
-  <h3><%= link_to post.title, post_path(post) %></h3>
-  <h4><%= post.description %></h4>
+<%= render post.categories %>
+<h3><%= link_to post.title, post_path(post) %></h3>
+<h4><%= post.description %></h4>
 
-  <small class="muted">
-    <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
-    | posted by <%= link_to post.creator.username, "#" %> <%= time_ago_in_words(post.created_at) + ' ago' %>
-  </small>  
+<small class="muted">
+  <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
+  | posted by <%= link_to post.creator.username, "#" %> <%= time_ago_in_words(post.created_at) + ' ago' %>
+  <%= link_to "edit", edit_post_path(post) %> 
+  | <%= link_to "delete", post, method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+  | <i class="icon-user"></i>
+</small>  
