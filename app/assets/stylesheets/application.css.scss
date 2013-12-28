@@ -28,6 +28,19 @@ body a:link {
   text-decoration: none;
  }
 
+.page-header {
+  margin: 20px 0 25px 0;
+  border-bottom: 2px solid #eeeeee;
+ }
+
+ h4 {
+  color: #0088cc;
+ }
+
+#flash_messages {
+  margin-top: 15px;
+ }
+
 /********** Header **********/
 
 .hero-unit {
@@ -93,6 +106,77 @@ body a:link {
 }
 
 /********** Main Content **********/
+
+#post_feed {
+  border-bottom: solid 2px #eeeeee;
+  margin-bottom: 25px;
+  margin-top: -25px;
+  padding: 7px 7px;
+ }
+
+#post_feed:hover {
+  background: #f6f9fa;
+ }
+
+ #show_post {
+  border-bottom: none;
+ }
+
+#create_comment {
+  margin: 20px 0 25px;
+  border-bottom: 2px solid #eeeeee;
+ }
+
+ #commented_data {
+
+ }
+
+#comment_feed {
+  border-bottom: solid 2px #eeeeee;
+  padding: 7px 7px;
+  margin-bottom: 25px;
+  margin-top: -25px;
+ }
+
+#comment_feed:hover {
+  background: #f6f9fa;
+ }
+
+#category_feed {
+  border-bottom: solid 2px #eeeeee;
+  margin-bottom: 25px;
+  margin-top: -25px;
+  padding: 7px 7px;
+ }
+
+#category_feed:hover {
+  background: #f6f9fa;
+ }
+
+.page-header#category_header a {
+  color: #333333;
+ }
+
+.page-header#category_header a:hover {
+  color: #0088cc;
+ }
+
+.badge {
+  margin: 10px 5px 10px 0;
+  padding-bottom: 5px;
+  background-color: #333333;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .badge a {
+  color: #fff;
+ }
+
+ .badge:hover {
+  background-color: #0088cc;
+ }
 
 /********** Footer **********/
 

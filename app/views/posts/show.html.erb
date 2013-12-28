@@ -1,37 +1,37 @@
 <%= render "shared/errors", obj: @comment %>
-
-<%= render @post.categories %>
-  <div class="page-header">
-    <h3><%= @post.title %></h3>
-      <small>
+<div class="page-header" id="show_post">
+  <%= render @post.categories %>
+    <h4><%= @post.title %></h4> 
+    <h5><%= @post.description %></h5>
+      <small class="muted">
         posted by <%= link_to @post.creator.username, "#" %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
         <%= link_to 'go to link', display_url(@post.url) %>
-        | <i class="icon-user"></i>
+        | <i class="icon-user"></i>        
 
         <div class="pull-right">
-        [<%= link_to "edit", edit_post_path(@post) %>]
-        [<%= link_to "delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %>]
-        </div>  
+        [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "edit", edit_post_path(@post) %>
+        | <i class="icon-trash" id="glyphs"></i> <%= link_to "delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
+        </div>   
       </small>
-  </div>
-  
-<h4><%= @post.description %></h4>
+</div>      
 
-<%= form_for [@post, @comment] do |f| %>
-  <div class="control-group">
-    <%= f.text_area :body, class: "span12", rows: "7", placeholder: "Comment goes here" %>
-  </div>
+<div id="create_comment">
+  <%= form_for [@post, @comment] do |f| %>
+    <div class="control-group">
+      <%= f.text_area :body, class: "span12", rows: "7", placeholder: "Comment goes here" %>
+    </div>
 
-  <%= f.submit "Create comment", class: "btn btn-primary" %> 
-<% end %>  
-
-<h5>All Comments:</h5>
+    <%= f.submit "Create comment", class: "btn btn-primary" %> 
+  <% end %>
+</div>  
 
 <% @post.comments.each do |comment| %>
-  <p><em><%= comment.body %></em></p>
-    <small class="muted">
-      commented by <%= link_to comment.creator.username, "#" %>
-      <%= time_ago_in_words(comment.created_at) + " ago" %>
+  <div id="comment_feed">
+    <h5><%= comment.body %></h5>
+    <%= link_to comment.creator.username, "#" %> -
+    <small class="muted" id="commented_data">commented <%= time_ago_in_words(comment.created_at) + " ago" %>
+      | <%= link_to "delete", "#" %>
       | <i class="icon-user"></i>
     </small>
+  </div>  
 <% end %>

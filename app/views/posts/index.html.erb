@@ -3,5 +3,7 @@
 </div>
 
 <% @posts.each do |post| %>
-  <%= render "post", post: post %>
+  <div id="post_feed">
+    <%= render "post", post: post %>
+  </div>  
 <% end %>  
