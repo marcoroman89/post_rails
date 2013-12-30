@@ -1,7 +1,8 @@
 <%= render "shared/errors", obj: @comment %>
 <div class="page-header" id="show_post">
   <%= render @post.categories %>
-    <h4><%= @post.title %></h4> 
+    <div class="pull-right"><%= link_to "Back to Posts", posts_path %></div>
+    <h4><%= @post.title %></h4>
     <h5><%= @post.description %></h5>
       <small class="muted">
         posted by <%= link_to @post.creator.username, "#" %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
@@ -28,10 +29,10 @@
 <% @post.comments.each do |comment| %>
   <div id="comment_feed">
     <h5><%= comment.body %></h5>
-    <%= link_to comment.creator.username, "#" %> -
-    <small class="muted" id="commented_data">commented <%= time_ago_in_words(comment.created_at) + " ago" %>
+    <i class="icon-user" id="user_show_icon"></i>
+     <%= link_to comment.creator.username, "#" %> -
+    <small class="muted">commented <%= time_ago_in_words(comment.created_at) + " ago" %>
       | <%= link_to "delete", "#" %>
-      | <i class="icon-user"></i>
     </small>
   </div>  
 <% end %>

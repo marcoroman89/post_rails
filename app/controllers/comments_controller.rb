@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new(params.require(:comment).permit(:body))
+    @comment = Comment.new(comment_params)
     @comment.post = @post
     @comment.creator = User.first # TODO: FIx after authentication
     
@@ -17,5 +17,10 @@ class CommentsController < ApplicationController
 
   def destroy
     
+  end
+
+  private
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 end  

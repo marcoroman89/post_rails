@@ -127,10 +127,6 @@ body a:link {
   border-bottom: 2px solid #eeeeee;
  }
 
- #commented_data {
-
- }
-
 #comment_feed {
   border-bottom: solid 2px #eeeeee;
   padding: 7px 7px;
@@ -176,6 +172,10 @@ body a:link {
 
  .badge:hover {
   background-color: #0088cc;
+ }
+
+ #user_show_icon {
+  margin-top: 2px;
  }
 
 /********** Footer **********/
