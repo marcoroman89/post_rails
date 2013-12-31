@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h3>Login<small> - login to start sharing!</small></h3>
+</div>
+
+<div class="well">
+  <%= form_tag "/login" do %>
+    <div class="contrtol-group">
+      <%= label_tag :username %>
+      <%= text_field_tag :username, nil, placeholder: "Username goes here" %>
+    </div>
+
+    <div class="contrtol-group">
+      <%= label_tag :password %>
+      <%= text_field_tag :password, nil, placeholder: "Password goes here" %>
+    </div>
+
+    <%= submit_tag "Login", class: "btn btn-primary" %>
+  <% end %>
+  <hr>
+  <small><%= link_to 'Register a New Account', "#" %></small>
+</div>  

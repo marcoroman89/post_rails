@@ -41,11 +41,29 @@ body a:link {
   margin-top: 15px;
  }
 
+ #glyphs {
+  margin-right: 2px;
+ }
+
+ #user_glyphs {
+  margin: 2px 8px 0 0;
+ }
+
+#all_comments {
+  margin: 20px 0 25px;
+  border-bottom: 2px solid #eeeeee;
+ }
+
 /********** Header **********/
 
 .hero-unit {
   padding: 30px;
   margin-top: 20px;
+}
+
+hr {
+  margin: 10px 0;
+  border-top: 2px solid #eeeeee;
 }
 
 /********** Nav-Menu **********/
@@ -120,11 +138,6 @@ body a:link {
 
  #show_post {
   border-bottom: none;
- }
-
-#create_comment {
-  margin: 20px 0 25px;
-  border-bottom: 2px solid #eeeeee;
  }
 
 #comment_feed {
