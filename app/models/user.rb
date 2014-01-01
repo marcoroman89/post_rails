@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
+  has_many :votes
 
   has_secure_password validations: false
 
@@ -14,8 +15,4 @@ class User < ActiveRecord::Base
     presence: true,
     on: :create,
     length: { minimum: 5 }
-
-  # def admin?
-  #   self.role == "admin"
-  # end
 end 
