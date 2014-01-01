@@ -62,6 +62,27 @@ body a:link {
   margin: 12px 0 10px 0;
 }
 
+.badge {
+  margin: 10px 5px 10px 0;
+  padding-bottom: 5px;
+  background-color: #333333;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+ .badge a {
+  color: #fff;
+ }
+
+ .badge:hover {
+  background-color: #0088cc;
+ }
+
+ #user_show_icon {
+  margin-top: 2px;
+ }
+
 /********** Header **********/
 
 .hero-unit {
@@ -200,26 +221,14 @@ hr {
   color: #0088cc;
  }
 
-.badge {
-  margin: 10px 5px 10px 0;
-  padding-bottom: 5px;
-  background-color: #333333;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
- }
-
- .badge a {
-  color: #fff;
- }
-
- .badge:hover {
-  background-color: #0088cc;
- }
-
- #user_show_icon {
-  margin-top: 2px;
- }
+#gravatar_nav img {
+  padding-right: 5px; 
+  width: 28px;
+  height: 28px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+}
 
 /********** Footer **********/
 

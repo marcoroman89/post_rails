@@ -53,7 +53,10 @@
             <li class="divider-vertical"></li>
             <li class="dropdown">
               <%= link_to("#", class: "dropdown-toggle", "data-toggle" => "dropdown") do %>
-                <%= current_user.username %><span class='caret'></span>
+                <div id="gravatar_nav">
+                  <%= image_tag(current_user.gravatar_url) %>
+                  <%= current_user.username %><span class='caret'></span>
+                </div>
               <% end %>
 
               <ul class="dropdown-menu">

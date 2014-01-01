@@ -3,7 +3,11 @@
   <%= f.text_field :username, placeholder: "Username goes here" %>
 
   <%= f.label :password %>
-  <%= f.password_field :password, placeholder: "Password goes here" %><br/>
+  <%= f.password_field :password, placeholder: "Password goes here" %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "Email goes here" %>
+  <br/>
 
   <div class="button">  
     <%= f.submit @user.new_record? ? "Register" : "Update Profile", class: "btn btn-primary" %>
