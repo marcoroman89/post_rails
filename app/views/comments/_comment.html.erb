@@ -1,9 +1,16 @@
 <% show_post ||= false %>
-
 <h5><%= comment.body %></h5>
 <% if show_post %>
-<p>commented on <em><%= link_to comment.post.title, post_path(comment.post) %></em></p>
+  <p>commented on <em><%= link_to comment.post.title, post_path(comment.post) %></em></p>
 <% end %>
+
+<%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post" do %>
+  <i class="icon-thumbs-up"></i> 
+<% end %>
+<%= comment.total_votes %> votes
+<%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post" do %>
+  <i class="icon-thumbs-down"></i> 
+<% end %><br/>
 
 <% if logged_in? && comment.creator == current_user %>
   <i class="icon-user" id="user_show_icon"></i>

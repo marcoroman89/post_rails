@@ -2,6 +2,14 @@
 <h4><%= link_to post.title, post_path(post) %></h4>
 <h5><%= post.description %></h5>
 
+<%= link_to vote_post_path(post, vote: true), method: "post" do %>
+  <i class="icon-thumbs-up"></i>
+<% end %>
+<%= post.total_votes %> votes
+<%= link_to vote_post_path(post, vote: false), method: "post" do %>
+  <i class="icon-thumbs-down"></i>
+<% end %><br/>
+
 <small class="muted">
   <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
   | posted by <%= link_to post.creator.username, user_path(post.creator) %> <%= time_ago_in_words(post.created_at) + ' ago' %>

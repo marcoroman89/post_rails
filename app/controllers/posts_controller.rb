@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :require_user, except: [:index, :show]
 
 
 
   def index
-    @posts = Post.all
+     @posts = Post.all.page(params[:page]).order("created_at DESC").per_page(4)
   end
 
   def show
@@ -44,6 +44,17 @@ class PostsController < ApplicationController
       flash[:notice] = "You successfully deleted your post!"
       redirect_to posts_path
     end
+  end
+
+  def vote
+    vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+
+    if vote.valid?
+      flash[:notice] = "Your vote was counted!"
+    else
+      flash[:error] = "You can only vote on a post once!"
+    end   
+    redirect_to :back
   end
 
   private

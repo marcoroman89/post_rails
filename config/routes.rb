@@ -7,13 +7,18 @@ PostRails::Application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
-
+  resources :users, only: [:show, :create, :edit, :update]
 
   resources :posts do
-    resources :comments, only: [:create, :destroy]
+    member do
+      post "vote" # /post/1/anyaction
+    end  
+    resources :comments, only: [:create, :destroy] do
+      member do
+        post "vote"
+      end  
+    end  
   end  
 
   resources :categories, only: [:new, :create, :show]  
-
-  resources :users, only: [:show, :create, :edit, :update]
 end
