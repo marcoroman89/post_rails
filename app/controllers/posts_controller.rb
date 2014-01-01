@@ -2,10 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :require_user, except: [:index, :show]
 
-
-
   def index
-     @posts = Post.all.page(params[:page]).order("created_at DESC").per_page(4)
+     @posts = Post.all.page(params[:page]).order("created_at DESC").per_page(14)
   end
 
   def show
@@ -68,6 +66,6 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by slug: params[:id]
   end
 end  

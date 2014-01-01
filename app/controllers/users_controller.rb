@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 def show; end
 
   def new
-    # Display the new users registration page.
     @user = User.new
   end
 
@@ -13,7 +12,6 @@ def show; end
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
       session[:user_id] = @user.id
       flash[:notice] = "You've successfully registered, start posting!"
       redirect_to root_path
@@ -39,7 +37,7 @@ def show; end
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by slug: params[:id]
   end
 
   def require_same_user

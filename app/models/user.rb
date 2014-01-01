@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Sluggable
+
   has_many :posts
   has_many :comments
   has_many :votes
@@ -17,9 +19,11 @@ class User < ActiveRecord::Base
     length: { minimum: 5 }
 
   validates :email,
-  presence: true,
-  uniqueness: true
+    presence: true,
+    uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "doesn't look like a valid address"
+
+  sluggable_column :username   
 
   def gravatar_url
     stripped_email = email.strip
