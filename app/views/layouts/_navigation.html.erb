@@ -69,7 +69,9 @@
           <% else %>
             <li><%= link_to "Register", register_path %></li>
             <li class="divider-vertical"></li>
-            <li><%= link_to "Login", login_path %></li>
+            
+            <!-- Modal Link Trigger Action -->
+            <li><%= link_to 'Login', login_path, :remote => true, "data-toggle" => "modal", "data-target" => "#myModal" %></li>
           <% end %>    
         </ul>  
       </div>
