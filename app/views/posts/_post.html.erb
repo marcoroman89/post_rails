@@ -1,14 +1,14 @@
 <%= render post.categories %>
-<h4><%= link_to post.title, post_path(post) %></h4>
-<h5><%= post.description %></h5>
+<h3><%= link_to post.title, post_path(post) %></h3>
+<h4><%= post.description %></h4>
 
 <div class="votes">
-  <%= link_to vote_post_path(post, vote: true), method: "post" do %>
-    <i class="icon-hand-up"></i>
+  <%= link_to vote_post_path(post, vote: true), method: "post", remote: true do %>
+    <i class="icon-hand-up" id="upvote"></i>
   <% end %>
-  <%= post.total_votes %> votes
-  <%= link_to vote_post_path(post, vote: false), method: "post" do %>
-    <i class="icon-hand-down"></i>
+  <span id="post_<%= post.id %>_votes"><%= post.total_votes %> votes</span>
+  <%= link_to vote_post_path(post, vote: false), method: "post", remote: true do %>
+    <i class="icon-hand-down" id="downvote"></i>
   <% end %>
 </div>
 

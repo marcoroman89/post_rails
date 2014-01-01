@@ -1,8 +1,8 @@
 <div class="page-header">
   <% if logged_in? %>
-    <h3>Welcome <small> - <%= current_user.username %>, start posting!</small></h3>
+    <h2>Welcome <small> - <%= current_user.username %>, start posting!</small></h2>
   <% else %>
-    <h3>Welcome <small> - please <%= link_to "register", register_path %> to get started!</small></h3>
+    <h2>Welcome <small> - please <%= link_to "register", register_path %> to get started!</small></h2>
   <% end %>
 </div>
 

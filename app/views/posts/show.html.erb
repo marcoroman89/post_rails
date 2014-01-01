@@ -2,19 +2,31 @@
 <div class="page-header" id="show_post">
   <%= render @post.categories %>
     <div class="pull-right"><%= link_to "Back to Posts", posts_path %></div>
-    <h4><%= @post.title %></h4>
-    <h5><%= @post.description %></h5>
-      <small class="muted">
-        posted by <%= link_to @post.creator.username, user_path(@post.creator) %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
-        <%= link_to 'go to link', display_url(@post.url) %>
-        <% if logged_in? && @post.creator == current_user %>
-          | <i class="icon-user" id="glyphs"></i>        
-          <div class="pull-right">
-            [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(@post) %>
-            | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
-          </div> 
-        <% end %>  
-      </small>
+    <h3 class="strong_title"><%= @post.title %></h3>
+    <hr>
+    <h4><%= @post.description %></h4>
+
+    <div class="votes">
+      <%= link_to vote_post_path(@post, vote: true), method: "post", remote: true do %>
+        <i class="icon-hand-up" id="upvote"></i>
+      <% end %>
+      <span id="post_<%= @post.id %>_votes"><%= @post.total_votes %> votes</span>
+      <%= link_to vote_post_path(@post, vote: false), method: "post", remote: true do %>
+        <i class="icon-hand-down" id="downvote"></i>
+      <% end %>
+    </div>
+    
+    <small class="muted">
+      posted by <%= link_to @post.creator.username, user_path(@post.creator) %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
+      <%= link_to 'go to link', display_url(@post.url) %>
+      <% if logged_in? && @post.creator == current_user %>
+        | <i class="icon-user" id="glyphs"></i>        
+        <div class="pull-right">
+          [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(@post) %>
+          | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
+        </div> 
+      <% end %>  
+    </small>
 </div>   
 
 <% if logged_in? %>

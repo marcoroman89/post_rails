@@ -5,12 +5,12 @@
 <% end %>
 
 <div class="votes">
-  <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post" do %>
-    <i class="icon-thumbs-up"></i> 
+  <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post", remote: true do %>
+    <i class="icon-hand-up" id="upvote"></i> 
   <% end %>
-  <%= comment.total_votes %> votes
-  <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post" do %>
-    <i class="icon-thumbs-down"></i> 
+  <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %> votes</span>
+  <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post", remote: true do %>
+    <i class="icon-hand-down" id="downvote"></i> 
   <% end %>
 </div>
 
