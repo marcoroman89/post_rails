@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
+  # before_action :require_creator_or_admin?, only: [:edit, :update]
+
 
   def index
     @posts = Post.all
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.creator = User.first # TODO: Change once we have authenitcation
+    @post.creator = current_user
 
     if @post.save
       flash[:notice] = "Your post was created!"
@@ -52,4 +54,8 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+  # def require_creator_or_admin?
+  #   access_denied unless logged_in? && (@post.creator == current_user || current_user.admin?)
+  # end
 end  

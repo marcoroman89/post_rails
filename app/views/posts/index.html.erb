@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h3>Welcome <small> - , start posting!</small></h3>
+  <% if logged_in? %>
+    <h3>Welcome <small> - <%= current_user.username %>, start posting!</small></h3>
+  <% else %>
+    <h3>Welcome <small> - please <%= link_to "register", register_path %> to get started!</small></h3>
+  <% end %>
 </div>
 
 <% @posts.each do |post| %>

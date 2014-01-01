@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h3><%= @user.username %>'s Profile <small> - last seen online <%= time_ago_in_words(@user.updated_at) %> ago, check out my code on <%= link_to "Github", "#" %> <i class="fa fa-github-alt"></i></small></h3>
+</div>
+
+<h4>Activity Feed:</h4>
+<ul class="nav nav-tabs">
+  <li class="<%= "active" if params[:tab].nil? %>">
+    <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
+  </li>
+  <li class="<%= "active" if params[:tab] == "comments" %>">
+    <%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: "comments") %>
+  </li>  
+</ul>
+
+<% if params[:tab].nil? %>
+  <% @user.posts.each do |post| %>
+    <div id="post_feed_user_profile">
+      <%= render "/posts/post", post: post %>
+    </div>
+  <% end %>
+<% elsif params[:tab] == "comments" %>
+  <% @user.comments.each do |comment| %>
+    <div id="comment_feed_user_profile">
+      <%= render "comments/comment", comment: comment, show_post: true %>
+    </div>
+  <% end %>
+<% end %>  

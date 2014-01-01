@@ -54,6 +54,10 @@ body a:link {
   border-bottom: 2px solid #eeeeee;
  }
 
+.button {
+  margin-top: 4px;
+}
+
 /********** Header **********/
 
 .hero-unit {
@@ -150,6 +154,28 @@ hr {
 #comment_feed:hover {
   background: #f6f9fa;
  }
+
+#post_feed_user_profile {
+  border-bottom: solid 2px #eeeeee;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  padding: 7px 7px;
+ }
+
+#post_feed_user_profile:hover {
+  background: #f6f9fa;
+}
+
+#comment_feed_user_profile {
+  border-bottom: solid 2px #eeeeee;
+  padding: 7px 7px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#comment_feed_user_profile:hover {
+  background: #f6f9fa;
+}
 
 #category_feed {
   border-bottom: solid 2px #eeeeee;

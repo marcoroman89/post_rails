@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :require_user, only: [:new, :create]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
     @comment.post = @post
-    @comment.creator = User.first # TODO: FIx after authentication
+    @comment.creator = current_user
     
    # @comment = @post.comments.build(params.require(:comment).permit(:body))
 

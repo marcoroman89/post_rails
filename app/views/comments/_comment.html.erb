@@ -1,0 +1,16 @@
+<% show_post ||= false %>
+
+<h5><%= comment.body %></h5>
+<% if show_post %>
+<p>commented on <em><%= link_to comment.post.title, post_path(comment.post) %></em></p>
+<% end %>
+
+<% if logged_in? && comment.creator == current_user %>
+  <i class="icon-user" id="user_show_icon"></i>
+<% end %>
+<%= link_to comment.creator.username, user_path(comment.creator) %> -
+<small class="muted">commented <%= time_ago_in_words(comment.created_at) + " ago" %>
+  <% if logged_in? && comment.creator == current_user %>
+    | <i class="icon-trash" id="glyphs"></i> <%= link_to "delete", "#" %>
+  <% end %>
+</small>
