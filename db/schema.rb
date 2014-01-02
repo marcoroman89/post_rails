@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101195620) do
+ActiveRecord::Schema.define(version: 20140102031234) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20140101195620) do
     t.string   "password_digest"
     t.string   "email"
     t.string   "slug"
+    t.string   "role"
+    t.string   "time_zone"
+    t.string   "github_profile_url"
   end
 
   create_table "votes", force: true do |t|

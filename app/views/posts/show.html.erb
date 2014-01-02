@@ -19,7 +19,7 @@
     <small class="muted">
       posted by <%= link_to @post.creator.username, user_path(@post.creator) %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
       <%= link_to 'go to link', display_url(@post.url) %>
-      <% if logged_in? && @post.creator == current_user %>
+      <% if logged_in? && (current_user == @post.creator || current_user.admin?) %>
         | <i class="icon-user" id="glyphs"></i>        
         <div class="pull-right">
           [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(@post) %>

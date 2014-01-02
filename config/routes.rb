@@ -11,7 +11,7 @@ PostRails::Application.routes.draw do
 
   resources :posts do
     member do
-      post "vote" # /post/1/anyaction
+      post "vote" 
     end  
     resources :comments, only: [:create, :destroy] do
       member do

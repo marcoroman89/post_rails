@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     on: :create,
     length: { minimum: 5 }
 
+  validates :github_profile_url,
+    presence: true,
+    uniqueness: true    
+
   validates :email,
     presence: true,
     uniqueness: true
@@ -31,5 +35,9 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(downcased_email)
 
     "http://gravatar.com/avatar/#{hash}"
+  end
+
+  def admin?
+    self.role == "admin"
   end
 end 

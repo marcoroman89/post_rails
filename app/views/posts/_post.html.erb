@@ -15,11 +15,11 @@
 <small class="muted">
   <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
   | posted by <%= link_to post.creator.username, user_path(post.creator) %> <%= time_ago_in_words(post.created_at) + ' ago' %>
-  <% if logged_in? && post.creator == current_user %>
+  <% if logged_in? && (current_user == post.creator || current_user.admin?) %>
     | <i class="icon-user"></i>
     <div class="pull-right">
       [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(post) %> 
-      | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
+      | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
     </div>
   <% end %>
 </small>  

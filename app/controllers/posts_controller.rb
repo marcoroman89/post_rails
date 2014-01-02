@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :require_user, except: [:index, :show]
+  before_action :require_creator, only: [:edit, :update]
 
   def index
      @posts = Post.all.page(params[:page]).order("created_at DESC").per_page(14)
@@ -68,4 +69,10 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find_by slug: params[:id]
   end
+
+  def require_creator
+    access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
+    # alternate syntax below
+    # access_denied if !logged_in? || (logged_in? and current_user != @post.creator)
+  end 
 end  
