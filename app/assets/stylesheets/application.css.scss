@@ -91,6 +91,11 @@ body a:link {
   color: #0088cc;
  }
 
+.ul, li {
+  list-style-type: none;
+  display: inline;
+}
+
 /********** Header **********/
 
 .hero-unit {
