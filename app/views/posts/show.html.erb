@@ -1,48 +1,64 @@
 <%= render "shared/errors", obj: @comment %>
-<div class="page-header" id="show_post">
-  <%= render @post.categories %>
-    <div class="pull-right"><%= link_to "Back to Posts", posts_path %></div>
-    <h3 class="strong_title"><%= @post.title %></h3>
-    <hr>
-    <h4><%= @post.description %></h4>
+<div class="row">
+  <div class="span1">
+    <div class="gravatar_post_show"><%= link_to image_tag(@post.creator.gravatar_url), user_path(@post.creator) %></div>
+  </div>  
+  
+  <div class="span11">
+    <div class="page-header" id="show_post">
+      <%= render @post.categories %>
+        <div class="pull-right"><i class="icon-arrow-left" id="glyphs"></i> <%= link_to "Back to Posts", posts_path %></div>
+        <h3 class="strong_title"><%= @post.title %></h3>
+        <hr>
+        <h4><%= @post.description %></h4>
 
-    <div class="votes">
-      <%= link_to vote_post_path(@post, vote: true), method: "post", remote: true do %>
-        <i class="icon-hand-up" id="upvote"></i>
-      <% end %>
-      <span id="post_<%= @post.id %>_votes"><%= @post.total_votes %> votes</span>
-      <%= link_to vote_post_path(@post, vote: false), method: "post", remote: true do %>
-        <i class="icon-hand-down" id="downvote"></i>
-      <% end %>
-    </div>
-    
-    <small class="muted">
-      posted by <%= link_to @post.creator.username, user_path(@post.creator) %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
-      <%= link_to 'go to link', display_url(@post.url) %>
-      <% if logged_in? && (current_user == @post.creator || current_user.admin?) %>
-        | <i class="icon-user" id="glyphs"></i>        
-        <div class="pull-right">
-          [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(@post) %>
-          | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
-        </div> 
-      <% end %>  
-    </small>
-</div>   
+        <div class="votes">
+          <%= link_to vote_post_path(@post, vote: true), method: "post", remote: true do %>
+            <i class="icon-hand-up" id="upvote"></i>
+          <% end %>
+          <span id="post_<%= @post.id %>_votes"><%= @post.total_votes %> votes</span>
+          <%= link_to vote_post_path(@post, vote: false), method: "post", remote: true do %>
+            <i class="icon-hand-down" id="downvote"></i>
+          <% end %>
+        </div>
+        
+        <small class="muted">
+          posted by <%= link_to @post.creator.username, user_path(@post.creator) %> <%= time_ago_in_words(@post.created_at) + " ago" %> |
+          <%= link_to 'go to link', display_url(@post.url) %>
+          <% if logged_in? && (current_user == @post.creator || current_user.admin?) %>
+            | <i class="icon-user" id="glyphs"></i>        
+            <div class="pull-right">
+              [ <i class="icon-pencil" id="glyphs"></i> <%= link_to "Edit", edit_post_path(@post) %>
+              | <i class="icon-trash" id="glyphs"></i> <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure your want to delete this post?"} %> ]
+            </div> 
+          <% end %>  
+        </small>
+    </div>   
 
-<% if logged_in? %>
-    <%= form_for [@post, @comment] do |f| %>
-        <%= f.text_area :body, class: "span12", rows: "7", placeholder: "Comment goes here" %>
-      <div class="button">  
-        <%= f.submit "Create comment", class: "btn btn-primary" %> 
+    <% if logged_in? %>
+        <%= form_for [@post, @comment] do |f| %>
+            <%= f.text_area :body, class: "span11", rows: "7", placeholder: "Comment goes here" %>
+          <div class="button">  
+            <%= f.submit "Create comment", class: "btn btn-primary" %> 
+          </div>
+        <% end %>
+    <% end %>  
+      <div id="all_comments">
+        <h4 class="strong_title">Comments</h4>
+      </div>
+
+    <% @post.comments.each do |comment| %>
+      <div id="comment_feed">
+        <div class="row">
+          <div class="span0">
+            <div class="gravatar_comment"><%= link_to image_tag(comment.creator.gravatar_url), user_path(comment.creator) %></div>
+          </div>
+
+          <div class="span8">
+            <%= render "comments/comment", comment: comment %>
+          </div>  
+        </div>
       </div>
     <% end %>
-<% end %>  
-  <div id="all_comments">
-    <h4 class="strong_title">Comments</h4>
   </div>
-
-<% @post.comments.each do |comment| %>
-  <div id="comment_feed">
-    <%= render "comments/comment", comment: comment %>
-  </div>
-<% end %>
+</div>

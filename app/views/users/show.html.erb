@@ -1,28 +1,36 @@
-<div class="page-header">
-  <h3><%= @user.username %>'s Profile <small> - <%= @user.time_zone %> | check out my code on <%= link_to "Github", display_url(@user.github_profile_url) %> <i class="fa fa-github-alt"></i> 
+<div class="row">
+  <div class="span1">
+    <div class="gravatar_user_profile"><%= image_tag(@user.gravatar_url) %></div>
+  </div>  
+  
+  <div class="span11">
+    <div class="page-header">
+      <h3><%= @user.username %>'s Profile <small> - <%= @user.time_zone %> | check out my code on <%= link_to "Github", display_url(@user.github_profile_url) %> <i class="fa fa-github-alt"></i></small></h3> 
+    </div>
+
+    <h4>Activity Feed:</h4>
+    <br/>
+    <ul class="nav nav-tabs">
+      <li class="<%= "active" if params[:tab].nil? %>">
+        <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
+      </li>
+      <li class="<%= "active" if params[:tab] == "comments" %>">
+        <%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: "comments") %>
+      </li>  
+    </ul>
+
+    <% if params[:tab].nil? %>
+      <% @user.posts.each do |post| %>
+        <div id="post_feed_user_profile">
+          <%= render "/posts/post", post: post %>
+        </div>
+      <% end %>
+    <% elsif params[:tab] == "comments" %>
+      <% @user.comments.each do |comment| %>
+        <div id="comment_feed_user_profile">
+          <%= render "comments/comment", comment: comment, show_post: true %>
+        </div>
+      <% end %>
+    <% end %> 
+  </div> 
 </div>
-
-<h4>Activity Feed:</h4>
-<br/>
-<ul class="nav nav-tabs">
-  <li class="<%= "active" if params[:tab].nil? %>">
-    <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
-  </li>
-  <li class="<%= "active" if params[:tab] == "comments" %>">
-    <%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: "comments") %>
-  </li>  
-</ul>
-
-<% if params[:tab].nil? %>
-  <% @user.posts.each do |post| %>
-    <div id="post_feed_user_profile">
-      <%= render "/posts/post", post: post %>
-    </div>
-  <% end %>
-<% elsif params[:tab] == "comments" %>
-  <% @user.comments.each do |comment| %>
-    <div id="comment_feed_user_profile">
-      <%= render "comments/comment", comment: comment, show_post: true %>
-    </div>
-  <% end %>
-<% end %>  

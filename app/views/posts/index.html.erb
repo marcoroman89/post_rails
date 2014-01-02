@@ -7,8 +7,15 @@
 </div>
 
 <% @posts.each do |post| %>
-  <div id="post_feed">
-    <%= render "post", post: post %>
-  </div>  
-<% end %>  
+    <div class="row">
+      <div class="span1">
+        <div class="gravatar_post"><%= link_to image_tag(post.creator.gravatar_url), user_path(post.creator) %></div>
+      </div>
+      <div class="span11">
+        <div id="post_feed">
+          <%= render 'post', post: post %>
+        </div>
+      </div>
+    </div>
+<% end %>
 <%= will_paginate @posts %>

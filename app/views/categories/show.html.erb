@@ -3,7 +3,14 @@
 </div>
 
 <% @category.posts.each do |post| %>
-  <div id="category_feed">
-    <%= render "posts/post", post: post %>
-  </div>
+    <div class="row">
+      <div class="span1">
+        <div class="gravatar_post"><%= link_to image_tag(post.creator.gravatar_url), user_path(post.creator) %></div>
+      </div>
+      <div class="span11">
+        <div id="post_feed">
+          <%= render 'posts/post', post: post %>
+        </div>
+      </div>
+    </div>
 <% end %>  

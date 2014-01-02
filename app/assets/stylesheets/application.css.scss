@@ -15,6 +15,7 @@
 $baseFontFamily: Roboto;
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
+
 @import "bootstrap";
 
 /********** Generic Items **********/
@@ -59,7 +60,7 @@ body a:link {
 }
 
 #upvote {
-  padding-left: 5px;
+  padding-left: 4px;
 }
 
 #downvote {
@@ -91,9 +92,24 @@ body a:link {
   color: #0088cc;
  }
 
-.ul, li {
-  list-style-type: none;
-  display: inline;
+
+hr {
+  margin: 5px 0;
+  border-top: 2px solid #eeeeee;
+}
+
+.nav-tabs {
+  margin-bottom: 10px;
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+  color: #555555;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default; 
 }
 
 /********** Header **********/
@@ -101,11 +117,6 @@ body a:link {
 .hero-unit {
   padding: 30px;
   margin-top: 20px;
-}
-
-hr {
-  margin: 5px 0;
-  border-top: 2px solid #eeeeee;
 }
 
 /********** Nav-Menu **********/
@@ -243,6 +254,46 @@ hr {
   color: #0088cc;
  }
 
+.gravatar_post img {
+  margin-top: -8px;
+  margin-right: -18px;
+  margin-left: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+}
+
+.gravatar_user_profile img {
+  width: 70px;
+  height: 70px;
+  margin-right: -12px;
+  margin-left: 12px;
+  margin-top: 31px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+}
+
+.gravatar_comment img {
+  width: 40px;
+  height: 40px;
+  margin-top: 14px;
+  margin-right: -12px;
+  margin-left: 12px;
+}
+
+.gravatar_post_show img {
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-left: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+}
 /********** Footer **********/
 
 .footer {

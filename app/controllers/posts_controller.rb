@@ -72,7 +72,5 @@ class PostsController < ApplicationController
 
   def require_creator
     access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
-    # alternate syntax below
-    # access_denied if !logged_in? || (logged_in? and current_user != @post.creator)
   end 
 end  
