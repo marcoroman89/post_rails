@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   validates :github_profile_url,
     presence: true,
-    uniqueness: true    
+    uniqueness: true  
 
   validates :email,
     presence: true,

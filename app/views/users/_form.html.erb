@@ -5,11 +5,14 @@
   <%= f.label :password %>
   <%= f.password_field :password, placeholder: "Password goes here" %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email, placeholder: "Email goes here" %>
-
   <%= f.label :github_profile_url, "Github Profile URL" %>
   <%= f.text_field :github_profile_url, :class=> "input", :placeholder=> "Github profile goes here" %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "Email goes here" %>
+  <%= link_to "#", id: "email_gravatar" do %>
+    <i class='icon-question-sign'></i>
+  <% end %>
 
   <%= f.label :time_zone, "Time-Zone" %>
   <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %><br/>
